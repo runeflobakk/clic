@@ -1,0 +1,10 @@
+h1. CLIC
+
+*Command Line Interface Controller*
+
+CLIC is a tiny framework for bootstrapping a standalone Java application.
+It provides an abstraction for the well-known @public static void main(String[] arguments)@,
+enabling the use of classical Service objects as entry points for program
+execution. As well as taking some of the burden off the handling of the arguments String array,
+it motivates a more testable approach to interpreting program arguments and delegating to appropriate
+business logic, which is often done in the actual @static void main@ method.
