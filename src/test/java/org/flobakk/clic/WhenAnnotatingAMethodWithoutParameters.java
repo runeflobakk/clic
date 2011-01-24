@@ -15,4 +15,10 @@ public class WhenAnnotatingAMethodWithoutParameters {
         assertTrue(service.wasInvoked());
     }
 
+    @Test
+    public void itShouldBeInvokedWithoutAnyCommandLineArguments() {
+        NoArgumentsService service = new NoArgumentsService();
+        new Bootstrapper(service).execute("arg1", "arg2");
+        assertTrue(service.wasInvoked());
+    }
 }
