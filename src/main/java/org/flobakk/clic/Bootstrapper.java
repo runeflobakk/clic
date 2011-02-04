@@ -32,7 +32,7 @@ public class Bootstrapper {
 
     public void execute(String ... args) {
         try {
-            cliMethod.invoke(cliService);
+            cliMethod.invoke(cliService, actualArguments(args));
         } catch (IllegalArgumentException e) {
             throw new RuntimeException(e.getMessage(), e);
         } catch (IllegalAccessException e) {
@@ -40,6 +40,14 @@ public class Bootstrapper {
         } catch (InvocationTargetException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
+    }
+
+    private Object[] actualArguments(String[] args) {
+        Object[] actualArguments = new Object[cliMethod.getParameterTypes().length];
+        for (int i = 0; i < actualArguments.length && i < args.length; i++) {
+            actualArguments[i] = args[i];
+        }
+        return actualArguments;
     }
 
 }
